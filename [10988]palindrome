@@ -1,0 +1,36 @@
+word = input().strip()  #혹시모를 공백 제거
+
+length = len(word) #for문 돌릴 길이 가져오기
+is_palindrome = 1 #참,거짓 판단 변수 선언
+
+for i in range(len(word)//2): #절반만 수행해도 됨
+    if word[i] != word[length-1-i]: #앞글자와 마지막 글자를 비교
+        is_palindrome = 0 #틀리면 바로 0찍고 구문 종료
+        break
+
+print(is_palindrome)
+
+# 알고리즘을 제대로 생각하지 않음(for문 개념)
+# 변수 활용을 잘 하지 못함(length, is_palindrome)
+
+chat gpt
+word = input().strip()
+is_palindrome = 1
+if word != word[::-1]:
+    is_palindrome = 0
+
+print(is_palindrome)
+word = list(str(input()))  #list를 해야 reversed가 사용 가능한가??
+
+if list(reversed(word)) == word:
+    print('1')
+else:
+    print('0')
+
+
+n = input()
+a= len(n)//2
+
+if n[:a] == n[-1:-(a+1):-1]:  # [:a] 앞부분의 절반만 가져옴 [-1:-(a+1):-1] 꺼구로 부터 시작해서 -(a+1) 앞에까지만(포함x) 가져옴
+    print(1)
+else:print(0)
