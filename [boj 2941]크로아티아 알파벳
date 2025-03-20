@@ -1,5 +1,6 @@
 str = input()
 
+//특중 문자를 비우고 크로아티아 문자를 전부 특정 문자로 replace 
 result = str.replace('a','b')
 result = result.replace('c=', 'a')
 result = result.replace('c-','a')
