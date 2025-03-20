@@ -1,0 +1,13 @@
+str = input()
+
+result = str.replace('a','b')
+result = result.replace('c=', 'a')
+result = result.replace('c-','a')
+result = result.replace('dz=','a')
+result = result.replace('d-','a')
+result = result.replace('lj','a')
+result = result.replace('nj','a')
+result = result.replace('s=','a')
+result = result.replace('z=','a')
+
+print(len(result))
