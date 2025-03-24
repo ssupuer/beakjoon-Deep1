@@ -1,0 +1,118 @@
+str = format(1000000000,',')  #1,000,000,000  단위에 ,
+print(str)
+str = format(1000000000,'e')  #1.000000e+09   지수
+print(str)
+str = format(1000000000,'x')  #3b9aca00   16진수수
+print(str)
+str = format(100000,'!>020,.4f')  #!!!!!!!!100,000.0000  ! 20만큼 채우고 소수점 4자리리
+print(str)
+
+def hojun(value):
+    if value %2 ==0:
+        return True
+    else:
+        return False
+num = list(filter(hojun,range(20)))
+print(num)   #[2, 4, 6, 8, 10, 12, 14, 16, 18] 짝수만 출력
+             # return을 Value로 하면 0은 출력 안됨됨
+num = list(filter(lambda x: x%2==0,range(20)))
+print(num) #[0, 2, 4, 6, 8, 10, 12, 14, 16, 18] 
+num = [i for i in range(20) if i %2 ==0]
+print(num) #[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+lens = len([1,2,3,4])
+print(lens) #4 길이이
+
+num = list(map(hojun,range(20)))
+print(num) #[True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False]
+num = list(map(lambda x: x%2==0,range(20)))
+print(num) #[True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False, True, False]
+num = list(map(lambda x:x**2, range(20)))
+print(num) #[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+num = list(zip(['a','b','c','d'],[1,2,3,4],[10,20,30,40],'ABCD'))
+print(num) #[('a', 1, 10, 'A'), ('b', 2, 20, 'B'), ('c', 3, 30, 'C'), ('d', 4, 40, 'D')]
+num = max([1,2,3,4])
+print(num) # 4
+num = min([1,2,3,4])
+print(num) # 1
+
+sor = [10,5,4,3,7,6]
+sor.sort()
+print(sor) # [3, 4, 5, 6, 7, 10]
+
+testCaseOne = [ 'abc', 'def', 'hello world', 'hello', 'python']
+testCaseTwo = 'life is too short, you ned python'.split()
+testCaseThree = list(zip('anvfe', [1,2,4,3,5]))
+
+testCaseOne = sorted(testCaseOne, key = len)
+print(testCaseOne) #['abc', 'def', 'hello', 'python', 'hello world']
+testCaseOne = sorted(testCaseOne, key = len,reverse=True)
+print(testCaseOne) #['hello world', 'python', 'hello', 'abc', 'def']
+# testCaseTwo = sorted(testCaseTwo, key=str.lower)
+# print(testCaseTwo)
+testCaseThree = sorted(testCaseThree, key = lambda x:x[1])
+print(testCaseThree) #[('a', 1), ('n', 2), ('f', 3), ('v', 4), ('e', 5)]
+
+num = not 5 in [1,2,3,4,5]
+print(num) #False
+
+def listchange(x):
+    x[0] = 1000
+    
+l = [1,2,3,4,5]
+# listchange(l)  
+print(l)  #list는 주소를 넘기기 때문에 값이 넘어간다 #[1000, 2, 3, 4, 5]
+listchange(l.copy())
+print(l) #[1, 2, 3, 4, 5]
+
+l = []
+l.append(10)
+l.append(20)
+l.append(30)
+l.pop(0) #원래는 마지막에 입력된거 빼지만 0번째 빼라고 하면 0번째 뺀 [10]
+l.pop() #[30]
+print(l) #[20]
+
+d={'one' : '하나' , 'two':'둘'}
+# d= d.keys()
+print(d) #dict_keys(['one', 'two'])
+# d = d.values()
+print(d) #dict_values(['하나', '둘'])
+# d=d.items()
+print(d) #dict_items([('one', '하나'), ('two', '둘')]) list 안에 튜플
+del d['one']
+print(d) # {'two': '둘'}
+
+s = set('112122234455566')
+print(s) #{'2', '5', '1', '4', '6', '3'} 순서가 없어서 주의
+
+s.add(7)
+print(s) #{'2', 7, '1', '5', '3', '6', '4'}
+s.discard(7)
+print(s) #{'2', '1', '5', '3', '6', '4'}
+s = '10' in s  #요소가 들어있는지 확인
+print(s) # False
+
+판콜에이 = {'A' , 'B', 'C'}
+타이레놀 = {'A' , 'B', 'D'}
+
+print(판콜에이.difference(타이레놀)) #차집합 {'C'}
+print(판콜에이.intersection(타이레놀)) #교집합 {'B', 'A'}
+print(len(판콜에이.intersection(타이레놀)))
+print(판콜에이.union(타이레놀)) #합집합 {'A', 'C', 'B', 'D'}
+
+serverData = '개리 라이캣 개리 개리 라이캣 자바독 자바독 파이 썬'
+# serverData = serverData.split()
+# print(serverData) #['개리', '라이캣', '개리', '개리', '라이캣', '자바독', '자바독', '파이', '썬']
+# serverData= len(set(serverData.split()))
+# print(serverData) #5
+
+for i in set(serverData.split()):
+    print(i, serverData.split().count(i)) # 파이 1 개리 3 라이캣 2 썬 1 자바독 2
+    d[i] = serverData.split().count(i) #딕셔너리
+print(d) #{'two': '둘', '썬': 1, '파이': 1, '라이캣': 2, '자바독': 2, '개리': 3}
+
+str = '1 2 3 4 5 6 7'.split()
+print(str) #['1', '2', '3', '4', '5', '6', '7']
+str = list(map(int,'1 2 3 4 5 6 7'.split()))
+print(str) #[1, 2, 3, 4, 5, 6, 7]
